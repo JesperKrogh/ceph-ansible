@@ -28,7 +28,7 @@ resource "aws_route53_record" "mon2" {
   name    = "mon2.ceph.internal"
   type    = "A"
   ttl     = "300"
-  records = [aws_instance.mon1.private_ip]
+  records = [aws_instance.mon2.private_ip]
 }
 
 resource "aws_route53_record" "mon3" {
@@ -36,6 +36,6 @@ resource "aws_route53_record" "mon3" {
   name    = "mon3.ceph.internal"
   type    = "A"
   ttl     = "300"
-  records = [aws_instance.mon1.private_ip]
+  records = [aws_instance.mon3.private_ip]
 }
 
