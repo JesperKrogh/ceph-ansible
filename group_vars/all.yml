@@ -93,7 +93,7 @@ osd_group_name: osds
 ntp_service_enabled: true
 
 # Set type of NTP client daemon to use, valid entries are chronyd, ntpd or timesyncd
-#ntp_daemon_type: chronyd
+ntp_daemon_type: ntpd
 
 # This variable determines if ceph packages can be updated.  If False, the
 # package resources will use "state=present".  If True, they will use
