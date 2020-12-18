@@ -21,7 +21,7 @@ resource "aws_instance" "mon1" {
   tags = {
         Name = "Ceph Monitor 1"
   }
-  user_data = "#!/bin/bash \nsudo hostname mon1.ceph.internal\n"
+  user_data = "#!/bin/bash\nsudo hostname mon1.ceph.internal\nsed -i 's/compute.internal/compute.internal ceph.internal/' /etc/resolv.conf\n"
 }
 
 
@@ -35,7 +35,7 @@ resource "aws_instance" "mon2" {
   tags = {
         Name = "Ceph Monitor 2"
   }
-  user_data = "#!/bin/bash \nsudo hostname mon2.ceph.internal\n"
+  user_data = "#!/bin/bash\nsudo hostname mon2.ceph.internal\nsed -i 's/compute.internal/compute.internal ceph.internal/' /etc/resolv.conf\n"
 }
 
 resource "aws_instance" "mon3" {
@@ -48,5 +48,5 @@ resource "aws_instance" "mon3" {
         Name = "Ceph Monitor 3"
   }
   associate_public_ip_address = false
-  user_data = "#!/bin/bash \nsudo  hostname mon3.ceph.internal\n"
+  user_data = "#!/bin/bash\nsudo  hostname mon3.ceph.internal\nsed -i 's/compute.internal/compute.internal ceph.internal/' /etc/resolv.conf\n"
 }
