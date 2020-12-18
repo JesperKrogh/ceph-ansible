@@ -106,7 +106,7 @@ ntp_service_enabled: true
 ###########
 # INSTALL #
 ###########
-ceph_repository_type: repository
+#ceph_repository_type: repository
 
 # ORIGIN SOURCE
 #
