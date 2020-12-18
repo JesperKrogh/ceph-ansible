@@ -5,7 +5,7 @@ resource "aws_instance" "management-host" {
   subnet_id = aws_subnet.cephadm.id
   key_name = aws_key_pair.terraformcluster.key_name
   associate_public_ip_address = true
-  user_data = "#!/bin/bash\nsudo hostname management\nsed -i 's/compute.internal/compute.internal ceph.internal/' /etc/resolv.conf\ncp /etc/resolv.conf /tmp; rm /etc/resolv.conf; mv /tmp/resolv.conf /etc\necho 'management' > /tmp/hostname\nsudo mv /tmp/hostname /etc/hostname\n"
+  user_data = "#!/bin/bash\nsed -i 's/compute.internal/compute.internal ceph.internal/' /etc/resolv.conf\ncp /etc/resolv.conf /tmp; rm /etc/resolv.conf; mv /tmp/resolv.conf /etc\necho 'management' > /etc/hostname\nhostname -F /etc/hostname\n"
   tags = {
         Name = "Ceph Management Host"
   }
@@ -21,7 +21,7 @@ resource "aws_instance" "mon1" {
   tags = {
         Name = "Ceph Monitor 1"
   }
-  user_data = "#!/bin/bash\nsudo hostname mon1\nsed -i 's/compute.internal/compute.internal ceph.internal/' /etc/resolv.conf\ncp /etc/resolv.conf /tmp; rm /etc/resolv.conf; mv /tmp/resolv.conf /etc\n"
+  user_data = "#!/bin/bash\nsed -i 's/compute.internal/compute.internal ceph.internal/' /etc/resolv.conf\ncp /etc/resolv.conf /tmp; rm /etc/resolv.conf; mv /tmp/resolv.conf /etc\necho 'mon1' > /etc/hostname\nhostname -F /etc/hostname\n"
 }
 
 
@@ -35,7 +35,7 @@ resource "aws_instance" "mon2" {
   tags = {
         Name = "Ceph Monitor 2"
   }
-  user_data = "#!/bin/bash\nsudo hostname mon2\nsed -i 's/compute.internal/compute.internal ceph.internal/' /etc/resolv.conf\ncp /etc/resolv.conf /tmp; rm /etc/resolv.conf; mv /tmp/resolv.conf /etc\n"
+  user_data = "#!/bin/bash\nsed -i 's/compute.internal/compute.internal ceph.internal/' /etc/resolv.conf\ncp /etc/resolv.conf /tmp; rm /etc/resolv.conf; mv /tmp/resolv.conf /etc\necho 'mon2' > /etc/hostname\nhostname -F /etc/hostname\n"
 }
 
 resource "aws_instance" "mon3" {
@@ -48,7 +48,7 @@ resource "aws_instance" "mon3" {
         Name = "Ceph Monitor 3"
   }
   associate_public_ip_address = false
-  user_data = "#!/bin/bash\nsudo hostname mon3\nsed -i 's/compute.internal/compute.internal ceph.internal/' /etc/resolv.conf\ncp /etc/resolv.conf /tmp; rm /etc/resolv.conf; mv /tmp/resolv.conf /etc\n"
+  user_data = "#!/bin/bash\nsed -i 's/compute.internal/compute.internal ceph.internal/' /etc/resolv.conf\ncp /etc/resolv.conf /tmp; rm /etc/resolv.conf; mv /tmp/resolv.conf /etc\necho 'mon3' > /etc/hostname\nhostname -F /etc/hostname\n"
 }
 
 
