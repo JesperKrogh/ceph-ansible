@@ -43,7 +43,7 @@ cluster: ceph
 
 # Inventory host group variables
 mon_group_name: mons
-#osd_group_name: osds
+osd_group_name: osds
 #rgw_group_name: rgws
 #mds_group_name: mdss
 #nfs_group_name: nfss
@@ -90,7 +90,7 @@ mon_group_name: mons
 
 # Enable the ntp service by default to avoid clock skew on ceph nodes
 # Disable if an appropriate NTP client is already installed and configured
-#ntp_service_enabled: true
+ntp_service_enabled: true
 
 # Set type of NTP client daemon to use, valid entries are chronyd, ntpd or timesyncd
 #ntp_daemon_type: chronyd
