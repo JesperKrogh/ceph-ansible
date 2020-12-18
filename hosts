@@ -7,10 +7,16 @@ mon1
 mon2
 mon3
 
+[mgrs]
+mon1
+mon2
+
 [osds]
 osd1
 osd2
 osd3
 osd4
 
+[clients]
+management
 
