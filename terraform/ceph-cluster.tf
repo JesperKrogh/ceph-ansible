@@ -109,6 +109,14 @@ resource "aws_security_group" "allow_ssh" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
+  ingress { 
+	description = "OSDs"
+        from_port = 6800
+        to_port = 7300
+        protocol = "tcp"
+        cidr_blocks = [ aws_vpc.ceph.cidr_block ]
+  }
+
   ingress {
 	description = "Monitors v1"
         from_port = 3300
