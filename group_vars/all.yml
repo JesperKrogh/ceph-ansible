@@ -5,7 +5,6 @@
 
 # Dummy variable to avoid error because ansible does not recognize the
 # file as a good configuration file when no variable in it.
-dummy:
 
 # You can override vars by using host or group vars
 
@@ -16,7 +15,7 @@ dummy:
 ######################################
 # Releases name to number dictionary #
 ######################################
-#ceph_release_num:
+ceph_release_num:
 #  dumpling: 0.67
 #  emperor: 0.72
 #  firefly: 0.80
@@ -27,7 +26,7 @@ dummy:
 #  kraken: 11
 #  luminous: 12
 #  mimic: 13
-#  nautilus: 14
+  nautilus: 14
 #  octopus: 15
 #  pacific: 16
 #  dev: 99
@@ -118,14 +117,14 @@ dummy:
 # - 'distro' means that no separate repo file will be added
 #  you will get whatever version of Ceph is included in your Linux distro.
 # 'local' means that the ceph binaries will be copied over from the local machine
-#ceph_origin: dummy
+ceph_origin: repository
 #valid_ceph_origins:
 #  - repository
 #  - distro
 #  - local
 
 
-#ceph_repository: dummy
+ceph_repository: community
 #valid_ceph_repository:
 #  - community
 #  - rhcs
@@ -141,7 +140,7 @@ dummy:
 #
 #ceph_mirror: http://download.ceph.com
 #ceph_stable_key: https://download.ceph.com/keys/release.asc
-#ceph_stable_release: dummy
+ceph_stable_release: nautilus
 #ceph_stable_repo: "{{ ceph_mirror }}/debian-{{ ceph_stable_release }}"
 
 #nfs_ganesha_stable: true # use stable repos for nfs-ganesha
@@ -308,7 +307,7 @@ dummy:
 # These variables must be defined at least in all.yml and overrided if needed (inventory host file or group_vars/*.yml).
 # Eg. If you want to specify for each monitor which address the monitor will bind to you can set it in your **inventory host file** by using 'monitor_address' variable.
 # Preference will go to monitor_address if both monitor_address and monitor_interface are defined.
-#monitor_interface: interface
+monitor_interface: ens5
 #monitor_address: x.x.x.x
 #monitor_address_block: subnet
 # set to either ipv4 or ipv6, whichever your network is using
@@ -644,7 +643,7 @@ dummy:
 #############
 # DASHBOARD #
 #############
-#dashboard_enabled: True
+dashboard_enabled: False
 # Choose http or https
 # For https, you should set dashboard.crt/key and grafana.crt/key
 # If you define the dashboard_crt and dashboard_key variables, but leave them as '',
