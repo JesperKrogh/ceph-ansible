@@ -5,7 +5,7 @@ resource "aws_instance" "management-host" {
   subnet_id = aws_subnet.cephadm.id
   key_name = aws_key_pair.terraformcluster.key_name
   associate_public_ip_address = true
-  user_data = "#!/bin/bash\nsudo hostname mangement.ceph.internal\n"
+  user_data = "#!/bin/bash\nsudo hostname mangement\necho 'management' > /tmp/hostname\nsudo mv /tmp/hostname /etc/hostname\n"
   tags = {
         Name = "Ceph Management Host"
   }
