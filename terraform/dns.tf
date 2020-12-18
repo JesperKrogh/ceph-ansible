@@ -2,7 +2,7 @@ resource "aws_route53_zone" "private" {
   name = "ceph.internal"
 
   vpc {
-    vpc_id = aws_vpc.terraform.id
+    vpc_id = aws_vpc.ceph.id
   }
 }
 
