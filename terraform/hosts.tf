@@ -52,7 +52,7 @@ resource "aws_instance" "osd" {
         Name = "Ceph OSD ${count.index}"
   }
   associate_public_ip_address = false
-  user_data = "#!/bin/bash\nsudo hostname osd${count.index}1\nsed -i 's/compute.internal/compute.internal ceph.internal/' /etc/resolv.conf\ncp /etc/resolv.conf /tmp; rm /etc/resolv.conf; mv /tmp/resolv.conf /etc\n"
+  user_data = element(data.template_file.osd-ci.*.rendered,count.index)
 }
 
 
