@@ -19,7 +19,7 @@ resource "aws_vpc" "ceph" {
   enable_dns_hostnames = true
 
   tags = {
-    Name = "terraform"
+    Name = "Ceph VPC"
   }
 }
 
@@ -45,6 +45,9 @@ resource "aws_subnet" "cephadm" {
 resource "aws_nat_gateway" "gw" {
   allocation_id = aws_eip.nat.id
   subnet_id     = aws_subnet.cephadm.id
+  tags = {
+    Name = "Ceph NAT GW"
+  }
 }
 
 resource "aws_eip" "nat" {
@@ -60,7 +63,7 @@ resource "aws_route_table" "internet_rt" {
   }
 
   tags = {
-    Name = "main"
+    Name = "Ceph Internet GW"
   }
 }
 
@@ -85,7 +88,7 @@ resource "aws_route_table" "nat_rt" {
   }
 
   tags = {
-    Name = "main"
+    Name = "Ceph RT"
   }
 }
 
@@ -140,7 +143,7 @@ resource "aws_security_group" "allow_ssh" {
   }
 
   tags = {
-    Name = "allow_ssh and ping"
+    Name = "Ceph allow_ssh and ping"
   }
 }
 
@@ -155,7 +158,7 @@ resource "aws_internet_gateway" "gw" {
   vpc_id = aws_vpc.ceph.id
 
   tags = {
-    Name = "terraform"
+    Name = "Ceph Gateway"
   }
 }
 
